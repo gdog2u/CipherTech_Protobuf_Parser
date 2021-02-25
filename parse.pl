@@ -6,7 +6,15 @@ use JSON;
 
 our @charts = ();
 
-open(my $fh, '<', 'music.dat');
+my $filename = $ARGV[0];
+
+if(!$filename || !(-e $filename))
+{
+	print "A file must be provided";
+	exit;
+}
+
+open(my $fh, '<', $filename);
 
 while(my $line = <$fh>)
 {
